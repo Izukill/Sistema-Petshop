@@ -48,58 +48,77 @@ public class MenuCadastros {
         }
     }
 
-
-
     private void cadastrarCliente() throws PersistenceDaoException {
+        System.out.println("\n>> NOVO CLIENTE");
         String nome = ConsoleUI.lerTexto("Nome do Cliente:");
         String email = ConsoleUI.lerTexto("Email:");
         String fone = ConsoleUI.lerTexto("Telefone:");
-        Cliente c = new Cliente(true, email, "Endereço Padrão", nome, fone, LocalDate.now());
+        String endereco = ConsoleUI.lerTexto("Endereço:");
+
+
+        Cliente c = new Cliente(true, email, endereco, nome, fone, LocalDate.now());
         clienteDAO.save(c);
-        System.out.println("Cliente salvo ID: " + c.getId());
+        System.out.println("Cliente salvo com ID: " + c.getId());
     }
 
+    private void cadastrarFuncionario() throws PersistenceDaoException {
+        System.out.println("\n>> NOVO FUNCIONÁRIO");
+        String nome = ConsoleUI.lerTexto("Nome:");
+        String email = ConsoleUI.lerTexto("Email:");
+        String fone = ConsoleUI.lerTexto("Telefone:");
+        String endereco = ConsoleUI.lerTexto("Endereço:");
+        String cargo = ConsoleUI.lerTexto("Cargo:");
+        String matricula = ConsoleUI.lerTexto("Matrícula:");
 
 
-    private void cadastrarPet() throws PersistenceDaoException {
-        int idDono = ConsoleUI.lerInteiro("ID do Dono (Cliente):");
-        Cliente dono = clienteDAO.getByID(idDono);
-        if (dono == null || !dono.getAtivo()) {
-            System.out.println("Cliente inválido ou inativo.");
-            return;
-        }
-        String nome = ConsoleUI.lerTexto("Nome do Pet:");
-        String especie = ConsoleUI.lerTexto("Espécie:");
-        Pet p = new Pet(especie, LocalDate.now(), nome, "SRD", dono);
-        petDAO.save(p);
-        System.out.println("Pet cadastrado!");
+        Funcionario f = new Funcionario(true, email, endereco, nome, fone, cargo, "Geral", matricula);
+        funcionarioDAO.save(f);
+        System.out.println("Funcionário salvo com ID: " + f.getId());
     }
 
     private void cadastrarFornecedor() throws PersistenceDaoException {
+        System.out.println("\n>> NOVO FORNECEDOR");
         String nome = ConsoleUI.lerTexto("Nome Fantasia:");
         String cnpj = ConsoleUI.lerTexto("CNPJ:");
         String cat = ConsoleUI.lerTexto("Categoria:");
         String email = ConsoleUI.lerTexto("Email:");
         String fone = ConsoleUI.lerTexto("Telefone:");
-        Fornecedor f = new Fornecedor(true, email, "Endereço", nome, fone, cat, cnpj);
+        String endereco = ConsoleUI.lerTexto("Endereço:");
+
+        // Passando o endereço capturado
+        Fornecedor f = new Fornecedor(true, email, endereco, nome, fone, cat, cnpj);
         fornecedorDAO.save(f);
-        System.out.println("Fornecedor salvo ID: " + f.getId());
+        System.out.println("Fornecedor salvo com ID: " + f.getId());
     }
 
-    private void cadastrarFuncionario() throws PersistenceDaoException {
-        String nome = ConsoleUI.lerTexto("Nome:");
-        String cargo = ConsoleUI.lerTexto("Cargo:");
-        Funcionario f = new Funcionario(true, "email@func.com", "Endereço", nome, "0000", cargo, "Geral", "MAT-01");
-        funcionarioDAO.save(f);
-        System.out.println("Funcionário salvo ID: " + f.getId());
+    private void cadastrarPet() throws PersistenceDaoException {
+        System.out.println("\n>> NOVO PET");
+        int idDono = ConsoleUI.lerInteiro("ID do Dono (Cliente):");
+        Cliente dono = clienteDAO.getByID(idDono);
+
+        if (dono == null || !dono.getAtivo()) {
+            System.out.println("Cliente inválido ou inativo.");
+            return;
+        }
+
+        String nome = ConsoleUI.lerTexto("Nome do Pet:");
+        String especie = ConsoleUI.lerTexto("Espécie:");
+        String raca = ConsoleUI.lerTexto("Raça:");
+
+        Pet p = new Pet(especie, LocalDate.now(), nome, raca, dono);
+        petDAO.save(p);
+        System.out.println("Pet cadastrado!");
     }
 
     private void cadastrarProdutoCompleto() throws PersistenceDaoException {
+        System.out.println("\n>> NOVO PRODUTO");
         String nome = ConsoleUI.lerTexto("Nome do Produto:");
         double preco = ConsoleUI.lerDecimal("Preço Base:");
 
         System.out.println(">>> Vincular Fornecedor <<<");
-        for(Fornecedor f : fornecedorDAO.getAll()) System.out.println("ID: " + f.getId() + " - " + f.getNome());
+        for(Fornecedor f : fornecedorDAO.getAll()) {
+            System.out.println("ID: " + f.getId() + " - " + f.getNome());
+        }
         int idForn = ConsoleUI.lerInteiro("ID Fornecedor:");
         Fornecedor forn = fornecedorDAO.getByID(idForn);
 

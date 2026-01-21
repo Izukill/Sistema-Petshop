@@ -37,7 +37,7 @@ public class SistemaMsg {
 
     public void notificarStatusServico(Servico servico){
 
-        Pet pet = servico.getPet(); // Certifique-se que Servico tem esse getter
+        Pet pet = servico.getPet();
 
         if (pet == null || pet.getDono() == null) {
             System.out.println("[AVISO] Não foi possível notificar: Pet ou Dono não identificados no serviço.");
@@ -52,7 +52,7 @@ public class SistemaMsg {
                 dono.getNome(),
                 servico.getDescricao(),
                 pet.getNome(),
-                servico.getStatus(), // Ex: "CONCLUIDO", "EM ANDAMENTO"
+                servico.getStatus(), // Ex:"CONCLUIDO", "EM ANDAMENTO"
                 servico.getObservacao() != null ? servico.getObservacao() : "Sem observações."
         );
 

@@ -81,7 +81,7 @@ public class MenuEstoque {
         System.out.println("ID do Produto:");
         int idProd = ConsoleUI.lerInteiro("");
 
-        // Agora funciona porque declaramos produtoDAO lá em cima
+
         Produto prod = produtoDAO.getByID(idProd);
 
         if(est != null && prod != null){
@@ -92,7 +92,7 @@ public class MenuEstoque {
 
             System.out.println("Qtd a adicionar:");
             int qtd = ConsoleUI.lerInteiro("");
-            // Considerando qtd minima 0 para entrada avulsa simplificada
+            //considerando qtd minima 0 para entrada avulsa simplificada
             ItemEstoque item = new ItemEstoque(est, prod, qtd, 0);
             estoqueDAO.inserirItem(item);
             System.out.println("Adicionado.");
