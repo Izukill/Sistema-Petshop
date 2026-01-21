@@ -29,8 +29,6 @@ public class Pessoa implements EntidadeAtivavel{
 
     protected String nome;
 
-    protected String cpf;
-
     protected String endereco;
 
     protected String email;
@@ -46,14 +44,6 @@ public class Pessoa implements EntidadeAtivavel{
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getEmail() {
