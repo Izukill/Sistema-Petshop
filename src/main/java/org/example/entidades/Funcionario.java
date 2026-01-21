@@ -11,8 +11,8 @@ import java.util.List;
 public class Funcionario extends Pessoa{
 
 
-    public Funcionario(Boolean ativo, String cpf, String email, String endereco, String nome, String telefone, String cargo, String especializacao, String matricula) {
-        super(ativo, cpf, email, endereco, nome, telefone);
+    public Funcionario(Boolean ativo, String email, String endereco, String nome, String telefone, String cargo, String especializacao, String matricula) {
+        super(ativo, email, endereco, nome, telefone);
         this.cargo = cargo;
         this.especializacao = especializacao;
         this.matricula = matricula;

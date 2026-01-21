@@ -43,7 +43,7 @@ public class MenuEstoque {
         }
     }
 
-    // --- MÉTODOS DE AÇÃO (ESTOQUE)
+
 
     private void criarEstoque() throws PersistenceDaoException {
         String local = ConsoleUI.lerTexto("Nome do Local (ex: Loja):");

@@ -13,7 +13,7 @@ public class MenuCadastros {
     private final PetDAO petDAO;
     private final ProdutoDAO produtoDAO;
     private final FornecedorDAO fornecedorDAO;
-    private final EstoqueDAO estoqueDAO; // Precisa para o cadastro completo de produto
+    private final EstoqueDAO estoqueDAO;
 
     public MenuCadastros(ClienteDAO clienteDAO, FuncionarioDAO funcionarioDAO, PetDAO petDAO,
                          ProdutoDAO produtoDAO, FornecedorDAO fornecedorDAO, EstoqueDAO estoqueDAO) {
@@ -48,19 +48,18 @@ public class MenuCadastros {
         }
     }
 
-    // Copiar os métodos privados cadastrarCliente, cadastrarFuncionario, etc. da Main antiga para cá.
-    // Lembre-se de trocar 'scanner.nextLine()' por 'ConsoleUI.lerTexto(...)'.
+
 
     private void cadastrarCliente() throws PersistenceDaoException {
         String nome = ConsoleUI.lerTexto("Nome do Cliente:");
         String email = ConsoleUI.lerTexto("Email:");
         String fone = ConsoleUI.lerTexto("Telefone:");
-        Cliente c = new Cliente(true, null, email, "Endereço Padrão", nome, fone, LocalDate.now(), "");
+        Cliente c = new Cliente(true, email, "Endereço Padrão", nome, fone, LocalDate.now());
         clienteDAO.save(c);
         System.out.println("Cliente salvo ID: " + c.getId());
     }
 
-    // ... (Faça o mesmo para os outros métodos de cadastro, usando ConsoleUI)
+
 
     private void cadastrarPet() throws PersistenceDaoException {
         int idDono = ConsoleUI.lerInteiro("ID do Dono (Cliente):");
@@ -90,7 +89,7 @@ public class MenuCadastros {
     private void cadastrarFuncionario() throws PersistenceDaoException {
         String nome = ConsoleUI.lerTexto("Nome:");
         String cargo = ConsoleUI.lerTexto("Cargo:");
-        Funcionario f = new Funcionario(true, null, "email@func.com", "Endereço", nome, "0000", cargo, "Geral", "MAT-01");
+        Funcionario f = new Funcionario(true, "email@func.com", "Endereço", nome, "0000", cargo, "Geral", "MAT-01");
         funcionarioDAO.save(f);
         System.out.println("Funcionário salvo ID: " + f.getId());
     }

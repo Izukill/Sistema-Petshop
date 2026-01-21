@@ -10,9 +10,8 @@ import org.example.dao.EntidadeAtivavel;
 public class Pessoa implements EntidadeAtivavel{
 
 
-    public Pessoa(Boolean ativo, String cpf, String email, String endereco, String nome, String telefone) {
+    public Pessoa(Boolean ativo, String email, String endereco, String nome, String telefone) {
         this.ativo = ativo;
-        this.cpf = cpf;
         this.email = email;
         this.endereco = endereco;
         this.nome = nome;

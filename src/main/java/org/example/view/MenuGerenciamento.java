@@ -25,7 +25,7 @@ public class MenuGerenciamento {
         this.petDAO = petDAO;
     }
 
-    // --- NOVA SEÇÃO: GERENCIAMENTO (CRUD) ---
+
 
     public void exibirMenu() {
         System.out.println("\n--- GERENCIAMENTO DE DADOS ---");
@@ -50,7 +50,7 @@ public class MenuGerenciamento {
         }
     }
 
-    // --- GERENCIAR CLIENTES ---
+    //gerenciar clientes
     private void gerenciarClientes() throws PersistenceDaoException {
         System.out.println("\n>> CLIENTES");
         System.out.println("1. Listar Todos | 2. Atualizar | 3. Remover/Desativar | 0. Voltar");
@@ -67,7 +67,7 @@ public class MenuGerenciamento {
                 c.setNome(ConsoleUI.lerTextoAtualizar("Nome", c.getNome()));
                 c.setEmail(ConsoleUI.lerTextoAtualizar("Email", c.getEmail()));
                 c.setTelefone(ConsoleUI.lerTextoAtualizar("Telefone", c.getTelefone()));
-                // Opção para reativar
+                //opção para reativar
                 if (!c.getAtivo()) {
                     System.out.println("Este cliente está INATIVO. Deseja reativar? (S/N)");
                     String resp = ConsoleUI.scanner.nextLine();
@@ -85,7 +85,7 @@ public class MenuGerenciamento {
         }
     }
 
-    // --- GERENCIAR FUNCIONÁRIOS ---
+    //gerenciar funcionarios
     private void gerenciarFuncionarios() throws PersistenceDaoException {
         System.out.println("\n>> FUNCIONÁRIOS");
         System.out.println("1. Listar Todos | 2. Atualizar | 3. Remover/Desativar | 0. Voltar");
@@ -115,7 +115,7 @@ public class MenuGerenciamento {
         }
     }
 
-    // --- GERENCIAR FORNECEDORES ---
+    //gerenciar fornecedores
     private void gerenciarFornecedores() throws PersistenceDaoException {
         System.out.println("\n>> FORNECEDORES");
         System.out.println("1. Listar Todos | 2. Atualizar | 3. Remover/Desativar | 0. Voltar");

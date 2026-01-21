@@ -13,7 +13,7 @@ import java.util.List;
 public class Fornecedor extends Pessoa{
 
     public Fornecedor(Boolean ativo, String email, String endereco, String nome, String telefone, String categoria, String cnpj) {
-        super(ativo, null, email, endereco, nome, telefone);
+        super(ativo, email, endereco, nome, telefone);
         this.categoria = categoria;
         this.cnpj = cnpj;
     }
